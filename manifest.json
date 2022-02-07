@@ -1,0 +1,19 @@
+{
+  "name": "Firebase Account Switcher",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "zoi",
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://console.firebase.google.com/u/0/project/*"
+      ],
+      "js": [
+        "js/script.js"
+      ]
+    }
+  ]
+}
