@@ -9,7 +9,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://console.firebase.google.com/*"
+        "https://console.firebase.google.com/*",
+        "https://drive.google.com/drive/*"
       ],
       "js": [
         "js/script.js"
