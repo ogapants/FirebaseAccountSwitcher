@@ -1,8 +1,8 @@
 {
-  "name": "Firebase Account Switcher",
+  "name": "G Account Switcher",
   "version": "0.1.0",
   "manifest_version": 2,
-  "description": "zoi",
+  "description": "automatically switch `/u/0/` of URL to `/u/1/` and copy URL as `/u/0/`",
   "icons": {
     "128": "icon.png"
   },
