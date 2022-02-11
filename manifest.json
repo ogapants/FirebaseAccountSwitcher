@@ -16,5 +16,14 @@
         "js/script.js"
       ]
     }
+  ],
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "permissions": [
+    "contextMenus",
+    "clipboardRead"
   ]
 }
