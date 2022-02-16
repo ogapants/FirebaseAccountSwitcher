@@ -10,7 +10,8 @@
     {
       "matches": [
         "https://console.firebase.google.com/*",
-        "https://drive.google.com/drive/*"
+        "https://drive.google.com/drive/*",
+        "https://datastudio.google.com/u/0/*"
       ],
       "js": [
         "js/script.js"
