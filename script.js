@@ -1,6 +1,5 @@
-const replaceAccountNum = String(1);
-
-window.onload = function () {
+// Reload page
+function reload(replaceAccountNum) {
   var url = new URL(window.location.href);
 
   if (url.href.includes("/u/0/")) {
@@ -21,15 +20,33 @@ window.onload = function () {
     url.searchParams.set("authuser", replaceAccountNum);
     window.location.replace(url);
   }
+}
 
-  //Receive event from background.js
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log("received: " + sender);
-    var newUrl = window.location.href.replace(
-      `/u/${replaceAccountNum}/`,
-      "/u/0/"
-    );
-    navigator.clipboard.writeText(newUrl);
-    sendResponse({});
-  });
-};
+// Copy URL
+function copy(replaceAccountNum) {
+  var originalUrl = window.location.href.replace(
+    `/u/${replaceAccountNum}/`,
+    "/u/0/"
+  );
+  navigator.clipboard.writeText(originalUrl);
+}
+
+// Receive event from background.js and popup.js
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  switch (request.type) {
+    case "accountNum":
+      reload(request.data);
+      break;
+    case "copyUrl":
+      chrome.storage.local.get({ accountNum }, function (items) {
+        copy(items.accountNum);
+      });
+      break;
+    default:
+      sendResponse({});
+      break;
+  }
+});
+
+//Notify background.js
+chrome.runtime.sendMessage("onLoadScript");
